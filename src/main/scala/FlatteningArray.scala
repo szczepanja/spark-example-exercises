@@ -18,7 +18,7 @@ object FlatteningArray extends App {
   //najpierw znajdź długość arraya, możemy to zrobić za pomocą metody size
   //  val array_size = input.withColumn("size", functions.size($"value"))
 
-  val array_size = 3
+  val array_size = input.as[Seq[String]].head.size
 
   //w jaki sposób dodać kolumnę? withColumn
   //jak to zrobić? mając długość array i wykonać tyle razy withColumn? foldleft
