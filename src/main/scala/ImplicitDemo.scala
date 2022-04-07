@@ -18,6 +18,7 @@ object ImplicitDemo extends App {
     ("1000.00^Test_string", "^")).toDF("values", "delimiter")
 
   //dynamiczne wyjęcie symboli z delimiter za pomocą expr
-  val solution = dept.withColumn("split_values", expr("""split(values, concat('\\', delimiter))""")).show
+  val solution = dept.withColumn("split_values", expr("""split(values, concat('\\', delimiter))"""))
+  solution.show
 
 }
