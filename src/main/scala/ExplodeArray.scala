@@ -15,4 +15,13 @@ object ExplodeArray extends App {
   val num = nums.withColumn("num", explode($"nums"))
 
   num.show()
+
+  val dates = Seq(
+    ("08-11-2015"),
+    ("09-11-2015"),
+    ("09-12-2015")).toDF("date")
+
+  val toDate = dates.select($"date_string", to_date($"date_string", "dd/MM/yyyy"))
+  toDate.withColumn("diff", datediff(current_date(), $"to_date(date_string, dd/MM/yyyy)")).show
+
 }
